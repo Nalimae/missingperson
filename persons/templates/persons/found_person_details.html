@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Displaying information of the matched missing person with reported person -->
+<section id="team" class="team section-bg">
+    <div class="container" style="padding-top: 25px;">
+
+        <div class="section-title">
+            <h2>Match found!</h2>
+
+
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-4" style="padding: 10px;">
+                 <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text"><img
+                            src="{{found_person_details.reported_photo.url}}" alt="" class="img-fluid"> Registered Image
+                        <br><br>
+                                                   
+                        <img src="{{found_person_details.photo.url}}" alt="" class="img-fluid">
+                        Found-Person  Image
+                    </div><br>
+                    <div class="member-info">
+                                              <span>Found Location : {{found_person_details.found_location}}</span>
+                        <p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Age : {{found_person_details.age}}</li>
+                            <li class="list-group-item">Gender : {{found_person_details.gender}}</li>
+                            
+                           <h4> <li class="list-group-item">Details of Match: {{found_person_details.matched_confidence}}</li></h4>
+                            <li class="list-group-item">Contact Person : {{found_person_details.contact_person}}</li>
+                            <li class="list-group-item">Contact Email : {{found_person_details.contact_email}}</li>
+                           <li class="list-group-item">Contact Phone : {{found_person_details.phone}}</li>
+                        </ul>
+                        </p>
+
+                        <!-- if contact person is not contacted, display confirm and match button -->
+                        {% if not found_person_details.is_contacted %}
+                        <div class="text-center">
+                            <a href="{% url 'missing_person_match' found_person_details.pk%}"
+                                class="btn btn-primary">Send Notification</a>
+                        </div>
+                        {%endif%}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</section>
+{% endblock content %}

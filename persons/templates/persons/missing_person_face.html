@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="team" class="team section-bg">
+    <div class="container" style="padding-top: 30px;">
+
+        <div class="section-title">
+            <h2>Successfully generated Face Encoding!</h2>
+            <h3><a href="{% url 'create_reported_person' %}">Click this link to Report Found- Missing Person</a> </h3>
+                                                            
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
